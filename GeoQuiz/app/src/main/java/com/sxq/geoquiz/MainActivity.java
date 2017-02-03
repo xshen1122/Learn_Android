@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,7 +14,10 @@ import java.util.Stack;
 public class MainActivity extends AppCompatActivity {
     private Button btn1;
     private Button btn2;
-    private Button btn3;
+   // private Button btn3;
+   // private Button btn4;
+    private ImageButton btn3;
+    private ImageButton btn4;
     private TextView tv;
     private boolean userPressedTrue;
 //    private String[] list = {"Haikou is in Hainan Province?",
@@ -44,11 +48,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn1 = (Button) findViewById(R.id.button);
         btn2 = (Button) findViewById(R.id.button2);
-        btn3 = (Button) findViewById(R.id.button3);
+        btn3 = (ImageButton) findViewById(R.id.imageButton);
+        btn4 = (ImageButton) findViewById(R.id.imageButton2);
         tv = (TextView) findViewById(R.id.tv);
         //push_stack();
        update_question();
-
+        tv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                index = (index + 1)%bank.length; //为了保证循环显示
+                update_question();
+            }
+        });
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -86,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                 index = (index + 1)%bank.length; //为了保证循环显示
                 update_question();
+                btn4.setEnabled(true);
 
 //                //do something here.
 //                number ++;
@@ -100,6 +112,27 @@ public class MainActivity extends AppCompatActivity {
 //                correct = player.pop().toString();
 //                }
 //                //Toast.makeText(MainActivity.this,"You are Wrong",Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                if (index == 0){
+                    btn4.setEnabled(false);
+                }
+                else{
+
+                index = (index - 1)%bank.length; //为了保证循环显示
+                update_question();}
+
+//                if(correct.equals("no")){
+//                    //Toast.makeText(MainActivity.this,"You are Corrct",Toast.LENGTH_SHORT).show();
+//                    score = score + 20;
+//                }
+                //Toast.makeText(MainActivity.this,"You are Wrong",Toast.LENGTH_SHORT).show();
             }
 
         });
