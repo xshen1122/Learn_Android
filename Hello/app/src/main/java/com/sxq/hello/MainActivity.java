@@ -73,18 +73,22 @@ public class MainActivity extends AppCompatActivity {
     // toChoose()方法才4,5行，加上后面的onActivityResult，加起来不到10行，用处很大。
     public void toChoose(){
         Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);//通知
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "设置通知铃声");
         if (myUriStr != null) {
             intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(myUriStr));
-        }//选中的内容放到myUriStr里面。
-        startActivityForResult(intent, 0);
+        }//将若干个Ringtone显示出来。
+        startActivityForResult(intent, 0); //开启第二个Activity（铃声选择）
 
 
 
 
     }
     //用来将选中的铃声url保存下来。主要是这句：myUriStr = pickedUri.toString();
+    //选中铃声，点击“确定”按钮之后，就会立即回调onActivityResult()方法
+    /**
+     * 设置铃声之后的回调函数
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try {
@@ -134,3 +138,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+/*
+要点1：铃声管理
+Android RingtoneManager铃声管理
+android中的铃声通过RingtoneManager管理，RingtoneManager
+1. 管理来电铃声（TYPE_RINGTONE）
+2. 提示音（TYPE_NOTIFICATION）
+3.闹钟铃声（TYPE_ALARM）等
+================RingtoneManager的常用方法包括：
+1.getRingtone()    //获取铃声
+2.getDefaultUri()    //获取某一铃声类型的默认铃声
+3.setActualDefaultRingtoneUri()  //为某一铃声类型设置默认铃声
+4.getActualDefaultRingtoneUri(); //获取默认铃声
+
+要点2 Intent
+Android中提供一个叫Intent的类来实现屏幕之间的跳转
+1， 先定义一个Intent
+2， 把内容加进去
+3， 启动该Activity
+
+4， Activity的回调，当用户点击“确认”后完成的动作。
+
+
+
+
+
+
+ */
