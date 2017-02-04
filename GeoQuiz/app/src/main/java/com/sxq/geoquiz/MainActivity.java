@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void onSavedInstanceState(Bundle savedInstanceState){
+    public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
-        Log.d("SXQ","onSavedInstancedState");
+        Log.d("SXQ-process","onSavedInstancedState");
         savedInstanceState.putInt(KEY_INDEX,index);
     }
 
@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("SXQ","onCreate is called.");
+
+
         btn1 = (Button) findViewById(R.id.button);
         btn2 = (Button) findViewById(R.id.button2);
         btn3 = (ImageButton) findViewById(R.id.imageButton);
