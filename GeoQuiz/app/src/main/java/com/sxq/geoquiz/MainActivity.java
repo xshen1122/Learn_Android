@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
+    private final static String KEY_INDEX = "index";
     private Button btn1;
     private Button btn2;
    // private Button btn3;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 //    private int number = 0;
 //    private String correct = "";
 //    private int score = 0;
-
+//在这里写死了，TrueFalse数组的顺序。
     private TrueFalse[] bank = new TrueFalse[]{
             new TrueFalse(R.string.question_city,true),
             new TrueFalse(R.string.question_country,false),
@@ -42,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public void onSavedInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        Log.d("SXQ","onSavedInstancedState");
+        savedInstanceState.putInt(KEY_INDEX,index);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +60,13 @@ public class MainActivity extends AppCompatActivity {
         btn4 = (ImageButton) findViewById(R.id.imageButton2);
         tv = (TextView) findViewById(R.id.tv);
         //push_stack();
+        if(savedInstanceState != null){
+            index = savedInstanceState.getInt(KEY_INDEX);
+        }
        update_question();
+
+
+
         tv.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -194,6 +206,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         Log.d("SXQ","onStop is called");
     }
+
+
 
 }
 

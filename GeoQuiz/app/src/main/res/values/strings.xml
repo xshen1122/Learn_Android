@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GeoQuiz</string>
-    <string name="question_city">Beijing is the largest city</string>
-    <string name="question_river">Changjiang is the largest river</string>
-    <string name="question_country">China is the largest country</string>
+    <string name="question_city">1. Beijing is the largest city</string>
+    <string name="question_river">3. Changjiang is the largest river</string>
+    <string name="question_country">2. China is the largest country</string>
+
 </resources>
