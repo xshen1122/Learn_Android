@@ -2,6 +2,7 @@ package com.sxq.geoquiz;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        btn3.setOnClickListener(new View.OnClickListener() {
+        btn4.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
@@ -116,17 +117,14 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        btn4.setOnClickListener(new View.OnClickListener() {
+        btn3.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
-                if (index == 0){
-                    btn4.setEnabled(false);
-                }
-                else{
+                Log.d("SXQ",Integer.toString(index));
 
-                index = (index - 1)%bank.length; //为了保证循环显示
-                update_question();}
+                index = Math.abs((index - 1))%bank.length; //为了保证循环显示
+                update_question();
 
 //                if(correct.equals("no")){
 //                    //Toast.makeText(MainActivity.this,"You are Corrct",Toast.LENGTH_SHORT).show();
