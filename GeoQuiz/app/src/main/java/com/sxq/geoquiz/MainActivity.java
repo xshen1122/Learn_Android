@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("SXQ","onCreate is called.");
         btn1 = (Button) findViewById(R.id.button);
         btn2 = (Button) findViewById(R.id.button2);
         btn3 = (ImageButton) findViewById(R.id.imageButton);
@@ -159,6 +160,41 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("SXQ","onStart is called.");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("SXQ","onPause is called.");
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        Log.d("SXQ","onRestart is called");
+
+    }
+    protected  void onResume(){
+        super.onResume();
+        Log.d("SXQ","onResume is called");
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d("SXQ","onDestroy is called.");
+    }
+
+    @Override
+    protected  void onStop(){
+        super.onStop();
+        Log.d("SXQ","onStop is called");
+    }
+
 }
 
 /*
